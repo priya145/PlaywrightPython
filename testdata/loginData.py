@@ -26,3 +26,8 @@ confirmPassword = 'input[name="confirmPassword"]'
 passwordN = 'Qwerty123'
 employeeName = 'Admin'
 random_username = f'user_{random.randint(1000, 9999)}'
+
+listOfUser = 'div[class*="oxd-table-body"] div[class*="oxd-table-row"]'
+userNameUI = 'div:nth-child(2)'
+roleUI = 'div:nth-child(3)'
+statusUI = 'div:nth-child(5)'

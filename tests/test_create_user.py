@@ -29,7 +29,7 @@ def test_create_user():
             user.login(page)
 
             # Step 2: Navigate to the "Admin" section (User Management)
-            admin.clickAdminSection(page, loginData.adminSection)
+            user.clickAdminSection(page, loginData.adminSection)
 
             # Step 3: Add a new user and fill the details
             user.addUser(page)

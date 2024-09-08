@@ -37,10 +37,6 @@ class CreateUser(BasePage):
         base.clickButton(page, loginData.submit)
         base.isVisible(page, loginData.heading)
 
-    def takeUsername(self, page: Page, locator, text):
-        base = BasePage()
-        base.getInput(page, locator, text )
-
     def takeSearchInput(self, page: Page, locator, text):
         base = BasePage()
         base.getInput(page, locator, text)
