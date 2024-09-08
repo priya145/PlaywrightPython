@@ -24,33 +24,24 @@ def test_user_search():
             test.getURL(page, loginData.url)
 
             # Login with valid credentials
-            test.takeUsername(page, loginData.username, "Admin")
-            test.takePassword(page, loginData.password, "admin123")
-
-            # Click on the "Login" button
-            test.clickLogin(page, loginData.submit)
-            test.isVisible(page, loginData.heading)
+            admin.login(page)
 
             # Step 2: Navigate to the "Admin" section (User Management)
-            admin.clickAdminSection(page, loginData.adminSection)
+            admin.clickAdminSection(page)
 
             # Wait for the search bar to become visible
-            admin.isSearchVisible(page, loginData.search)
+            admin.isSearchVisible(page)
 
             # Step 3: Perform a search for the user 
-            admin.takeSearchInput(page, loginData.search, loginData.search_query)
-            test.clickLogin(page, loginData.submit)
+            admin.searchUser(page)
 
             # Step 4: Verify that search results are displayed
-            admin.isSearchVisible(page, loginData.searchResult)
+            admin.isSearchVisible(page)
             # Check if search results contain the search keyword
             assert loginData.search_query.lower() in page.text_content(loginData.searchResult).lower()
 
-            # Step 5: Validate that the user details page can be opened from search results
-            admin.openUserPage(page,loginData.userPage)  # Click on the first user in the results
-
-            # Check if the user details page is opened
-            admin.isUserDetailVisible(page, loginData.userDetail)
+            # Step 5: Validate that the user details page can be opened and check if user is visible from search results
+            admin.openUserPage(page)  # Click on the first user in the results
 
         except AssertionError as e:
             # Generate Report

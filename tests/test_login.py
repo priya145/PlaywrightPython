@@ -17,20 +17,19 @@ def test_user_login():
         page = browser.new_page()
 
         try:
-            #Navigate to the login page
+            # Navigate to the login page
             test.getURL(page, loginData.url)
-            #Login with Credentials
-            test.takeUsername(page,loginData.username, "Admin")
-            test.takePassword(page, loginData.password, "admin123")
-            #Click on the "Login" button
-            test.clickLogin(page, loginData.submit)
-            #Verify successful login by checking the presence of a user-specific element
-            test.isVisible(page, loginData.heading)
+
+            # Login with Credentials
+            test.login(page)
+
+            # Verify successful login by checking the presence of a user-specific element
+            test.isHeadingVisible(page)
 
         except AssertionError as e:
-            #Generate Report
+            # Generate Report
             base.generateReport(page)
-            raise e  #Re-raise the exception to ensure the test fails
+            raise e  # Re-raise the exception to ensure the test fails
 
         finally:
             # Close browser

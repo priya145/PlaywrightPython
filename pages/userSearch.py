@@ -4,28 +4,33 @@ from pages.testcasebase import BasePage
 # This is Page object class for User Search functionality
 # Author - Priya Tayade
 # Date - 08/09/2024
+from testdata import loginData
+
+
 class UserSearch(BasePage):
 
-    def takeUsername(self, page: Page, locator, text):
+    def login(self, page: Page):
         base = BasePage()
-        base.getInput(page, locator, text )
+        base.getInput(page, loginData.username, loginData.user)
+        base.getInput(page, loginData.password,loginData.passcred)
+        base.clickButton(page, loginData.submit)
+        base.isVisible(page, loginData.heading)
 
-    def takeSearchInput(self, page: Page, locator, text):
-        base = BasePage()
-        base.getInput(page, locator, text)
 
-    def clickAdminSection(self, page: Page, locator):
+    def searchUser(self, page: Page):
         base = BasePage()
-        base.clickButton(page, locator)
+        base.getInput(page, loginData.search, loginData.search_query)
+        base.clickButton(page, loginData.submit)
 
-    def openUserPage(self, page: Page, locator):
+    def clickAdminSection(self, page: Page):
         base = BasePage()
-        base.clickButton(page, locator)
+        base.clickButton(page, loginData.adminSection)
 
-    def isSearchVisible(self, page: Page, locator):
+    def openUserPage(self, page: Page):
         base = BasePage()
-        base.isVisible(page, locator)
+        base.clickButton(page, loginData.userPage)
+        base.isVisible(page,loginData.userDetail)
 
-    def isUserDetailVisible(self, page: Page, locator):
+    def isSearchVisible(self, page: Page):
         base = BasePage()
-        base.isVisible(page, locator)
+        base.isVisible(page, loginData.search)

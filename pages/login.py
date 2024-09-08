@@ -4,23 +4,18 @@ from pages.testcasebase import BasePage
 # This is Page object class for login functionality
 # Author - Priya Tayade
 # Date - 08/09/2024
+from testdata import loginData
+
+
 class Login(BasePage):
     def getURL(self, page: Page, url):
         base = BasePage()
         base.getURL(page, url)
-
-    def takeUsername(self, page: Page, locator, text):
+    def login(self, page: Page):
         base = BasePage()
-        base.getInput(page, locator, text )
-
-    def takePassword(self, page: Page, locator, text):
+        base.getInput(page, loginData.username, loginData.user)
+        base.getInput(page, loginData.password, loginData.passcred)
+        base.clickButton(page,loginData.submit)
+    def isHeadingVisible(self, page: Page):
         base = BasePage()
-        base.getInput(page, locator, text)
-
-    def clickLogin(self, page: Page, locator):
-        base = BasePage()
-        base.clickButton(page, locator)
-
-    def isHeadingVisible(self, page: Page, locator):
-        base = BasePage()
-        base.isVisible(page, locator)
+        base.isVisible(page, loginData.heading)
